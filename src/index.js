@@ -10,6 +10,7 @@ export default class ValidatedInput extends React.Component {
       validate,
       onBlur,
       containerClassName = 'validation-container',
+      errorClassName = 'error',
       ...props
     } = this.props;
     const validatorProxy = new Proxy(
@@ -23,7 +24,9 @@ export default class ValidatedInput extends React.Component {
       }
     );
     const hasError = this.state.hasBlurred && !validate(validatorProxy);
-    const containerClasses = `${containerClassName} ${hasError ? 'error' : ''}`;
+    const containerClasses = `${containerClassName} ${
+      hasError ? errorClassName : ''
+    }`;
     return (
       <div className={containerClasses}>
         <input
