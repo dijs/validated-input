@@ -7,7 +7,7 @@ export default class ValidatedInput extends React.Component {
   };
   render() {
     const {
-      validate,
+      validate = () => true,
       onBlur,
       containerClassName = 'validation-container',
       errorClassName = 'error',
